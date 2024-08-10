@@ -85,10 +85,8 @@ const MenuScreen = () => {
                                 <Text style={tw`text-lg font-bold text-gray-800 ml-3`}>{formatCurrency(product?.price)}</Text>
                             </View>
                         ))}
-                        {/* Repeat for other products */}
                     </View>
                 ))}
-                {/* Repeat for other sections */}
             </ScrollView>
         </View>
     );
