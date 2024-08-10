@@ -2,8 +2,7 @@ import { View, Dimensions, Image, Text, TouchableOpacity } from 'react-native'
 import React, { useRef, useState } from 'react'
 
 import tw from 'twrnc';
-import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel';
-import { Link } from '@react-navigation/native';
+import Carousel from 'react-native-reanimated-carousel';
 import MIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 interface ICarouselImage {
@@ -26,11 +25,11 @@ const CarouselImage: React.FC<ICarouselImage> = ({ data }) => {
                 onSnapToItem={(index) => setIndex(index)}
                 renderItem={({ index, item }) => (
                     <View
-                        style={tw`flex justify-center items-center mt-5 w-100 h-50 rounded-md bg-white`}
+                        style={tw`flex justify-center items-center mt-5 rounded-md`}
                     >
                         <Image
-                            source={item}
-                            style={tw`w-60 h-20 rounded-md bg-white`}
+                            source={{ uri: item }}
+                            style={tw`w-100 h-45 rounded-md `}
                         />
                     </View>
                 )}
@@ -43,7 +42,7 @@ const CarouselImage: React.FC<ICarouselImage> = ({ data }) => {
                 top: '55%'
             }}>
                 <View style={tw`flex flex-row items-center justify-center`}>
-                    {data.map((_, i) => (
+                    {data?.map((_, i) => (
                         <View
                             key={i}
                             style={[
