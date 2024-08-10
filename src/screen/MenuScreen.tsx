@@ -4,6 +4,7 @@ import tw from 'twrnc'
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { formatCurrency } from '../utils/helpers';
+import { useNavigation } from '@react-navigation/native';
 
 const MenuScreen = () => {
     const scrollViewRef = useRef<any>(null);
@@ -11,6 +12,7 @@ const MenuScreen = () => {
     const [sectionPositions, setSectionPositions] = useState<any>({});
     const [data, setData] = useState<any>({});
 
+    const navigation: any = useNavigation();
     const token = useSelector((state: any) => state.token);
 
     const fetchMenu = async () => {
@@ -19,10 +21,14 @@ const MenuScreen = () => {
                 Authorization: 'Bearer ' + token
             }
         }).then(res => {
+            if (res.status !== 200) {
+                navigation.navigate('Login');
+            }
             setData(res.data.result);
             setActiveTab(res.data.result?.categories[0]?.category_name);
         }).catch(err => {
             console.log(err);
+            navigation.navigate('Login');
         });
     }
 

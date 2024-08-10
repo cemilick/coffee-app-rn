@@ -22,9 +22,14 @@ const HomeScreen = () => {
                 'Authorization': 'Bearer ' + token
             }
         }).then(res => {
-            dispatch(setUserData(res.data.result));
+            if (res.status === 200) {
+                dispatch(setUserData(res.data.result));
+            } else {
+                navigation.navigate('Login');
+            }
         }).catch(err => {
             console.log(err);
+            navigation.navigate('Login');
         });
     }
 
