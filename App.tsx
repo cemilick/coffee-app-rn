@@ -19,9 +19,9 @@ const App = () => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName='Login' screenOptions={{ headerTitle: props => <Icon /> }}>
+          <Stack.Navigator initialRouteName='Home' screenOptions={{ headerTitle: props => <Icon /> }}>
             <Stack.Screen name='Login' component={LoginScreen} />
-            <Stack.Screen name='Home' component={BottomTab} options={{ headerLeft: props => <></> }} />
+            <Stack.Screen name='Home' component={BottomTab} options={{ headerLeft: props => <></>, headerShown: false }} />
             <Stack.Screen name='QRCode' component={QRCodeScreen} />
           </Stack.Navigator>
         </NavigationContainer>

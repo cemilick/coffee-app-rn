@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import tw from 'twrnc'
 import { Carousel } from '../components/Carousel';
 import axios from 'axios';
